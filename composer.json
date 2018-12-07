@@ -5,5 +5,8 @@
             "name": "Surapan Kulsavet",
             "email": "surapan.ku@gmail.com"
         }
-    ]
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.1"
+    }
 }
