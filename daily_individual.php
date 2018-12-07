@@ -4,7 +4,7 @@
   require('./libs/utils/date_utils.php');
 
   // line access token
-  $access_token = 'QPUPUnMzGhO//A8J2Qi1nmBXgEW89hciaaxNExeLVgxa8cjYtvnF9TZQF3TEjEOVA5HhS6dTRT2Tp4F0I3JhC0QWrQdmlBiL/6bhuazJI/juOxmvFx31NX7RWv9z19gbUZAdPIEuAURaHPy7TnDNkQdB04t89/1O/w1cDnyilFU=';
+  $access_token = 'n4mwBuF+8uG25l0sa3B9m6iTOARPDw2JdXvBc6DqE181CisyNbmLXoi7rT4J/gY4S3+zK5OVdXX4O1nE8iyidE/elIH2eHXxATN9dAtUGrnuEB06ZK6wXjmBDQFjoIzagGY/UtP/9XOW5RRWprrDEgdB04t89/1O/w1cDnyilFU=';
 
   // check holiday
   $todaytime = strtotime('today');
@@ -51,7 +51,7 @@
       $log_id = mysqli_insert_id($conn);
       $messages = [
         "type"=> "text",
-        "text"=> "Individual Alert :\n\nรายงานข้อร้องเรียนสถานะรอและกำลังดำเนินการมากกว่าเท่ากับ 7 วัน ของ ".$manager['office_name']." \n\nประจำวันที่ ".DateThai(date("Y-m-d"))." \n\nhttps://voc-bot.herokuapp.com/individual.php?office_id=".$manager['office_id']."&log_id=".$log_id
+        "text"=> "Individual Alert :\n\nรายงานข้อร้องเรียนสถานะรอและกำลังดำเนินการมากกว่าเท่ากับ 7 วัน ของ ".$manager['office_name']." \n\nประจำวันที่ ".DateThai(date("Y-m-d"))." \n\nhttps://voc-rg3.herokuapp.com/individual.php?office_id=".$manager['office_id']."&log_id=".$log_id
       ];
 
       $data = [

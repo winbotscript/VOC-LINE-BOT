@@ -5,15 +5,24 @@
 
     function getMainOfficeByOfficeCode($officeCode){
         switch(substr($officeCode, 0, 1)){
-            case "J":
-                return "กฟต.1";
+            case "G":
+                return "กฟก.1";
                 break;
-            case "K":
-                return "กฟต.2";
+            case "H":
+                return "กฟก.2";
                 break;
-            case "L":
-                return "กฟต.3";
+            case "I":
+                return "กฟก.3";
                 break;
+            // case "J":
+            //     return "กฟต.1";
+            //     break;
+            // case "K":
+            //     return "กฟต.2";
+            //     break;
+            // case "L":
+            //     return "กฟต.3";
+            //     break;
             default:
                 return "";
                 break;

@@ -1,6 +1,6 @@
 <?php
 require('./libs/database/connect-db.php');
-$access_token = 'QPUPUnMzGhO//A8J2Qi1nmBXgEW89hciaaxNExeLVgxa8cjYtvnF9TZQF3TEjEOVA5HhS6dTRT2Tp4F0I3JhC0QWrQdmlBiL/6bhuazJI/juOxmvFx31NX7RWv9z19gbUZAdPIEuAURaHPy7TnDNkQdB04t89/1O/w1cDnyilFU=';
+$access_token = 'n4mwBuF+8uG25l0sa3B9m6iTOARPDw2JdXvBc6DqE181CisyNbmLXoi7rT4J/gY4S3+zK5OVdXX4O1nE8iyidE/elIH2eHXxATN9dAtUGrnuEB06ZK6wXjmBDQFjoIzagGY/UtP/9XOW5RRWprrDEgdB04t89/1O/w1cDnyilFU=';
  
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -156,7 +156,7 @@ if (!is_null($events['events'])) {
 				if($addpos == 0){
 					$datenum = substr($text,$addpos+1,$lengh1);
 					$sql = "SELECT * FROM tbl_complaint WHERE number_of_day>=".$datenum." AND complaint_status <> 'ปิด'";
-					$mode4 = "https://voc-bot.herokuapp.com/south.php?NUMBER=".$text; //เรียกหน้าภาค
+					$mode4 = "https://voc-rg3.herokuapp.com/south.php?NUMBER=".$text; //เรียกหน้าภาค
 				}
 							
 				if($addpos > 1){ 
@@ -164,13 +164,13 @@ if (!is_null($events['events'])) {
 						$main_office = substr($text,0,$addpos); 
 						$sql = "SELECT * FROM tbl_complaint WHERE (office_name LIKE '%".$main_office."%' OR main_office LIKE '%".$main_office."%') AND complaint_status <> 'ปิด'";
 						$datenum1 = 0;
-						$mode4 = "https://voc-bot.herokuapp.com/req_office.php?REQ=".$main_office."&REQ2=".$datenum1;
+						$mode4 = "https://voc-rg3.herokuapp.com/req_office.php?REQ=".$main_office."&REQ2=".$datenum1;
 					}
 					if($addpos < $lengh1){
 						$main_office = substr($text,0,$addpos); 
 						$datenum = substr($text,$addpos+1,$lengh1); 
 						$sql = "SELECT * FROM tbl_complaint WHERE number_of_day>=".$datenum." AND (office_name LIKE '%".$main_office."%' OR main_office LIKE '%".$main_office."%') AND complaint_status <> 'ปิด'";
-						$mode4 = "https://voc-bot.herokuapp.com/req_office.php?REQ=".$main_office."&REQ2=".$datenum;	 			
+						$mode4 = "https://voc-rg3.herokuapp.com/req_office.php?REQ=".$main_office."&REQ2=".$datenum;	 			
 					} 
 				}
 							
