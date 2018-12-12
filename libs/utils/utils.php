@@ -62,13 +62,13 @@
         $objWorksheet = $objPHPExcel->setActiveSheetIndex(0);
         $highestRow = $objWorksheet->getHighestRow();
         $highestColumn = $objWorksheet->getHighestColumn();
-        $headingsArray = $objWorksheet->rangeToArray('A7:'.$highestColumn.'7', null, true, true, true);
-        $headingsArray = $headingsArray[7];
+        $headingsArray = $objWorksheet->rangeToArray('A1:'.$highestColumn.'1', null, true, true, true);
+        $headingsArray = $headingsArray[1];
 
         // collect data within $namedDataArray
         $r = -1;
         $namedDataArray = array();
-        for ($row = 8; $row <= $highestRow; ++$row) {
+        for ($row = 2; $row <= $highestRow; ++$row) {
             ++$r;
             $dataRow = $objWorksheet->rangeToArray('A'.$row.':'.$highestColumn.$row, null, true, true, true);
             foreach($headingsArray as $columnKey => $columnHeading) {
@@ -130,7 +130,7 @@
             // $received_date = isset($received_date) ? $received_date->format("Y-m-d"):NULL;
             // $settlement_date = isset($settlement_date) ? $settlement_date->format("Y-m-d"):NULL;
 
-            $sql = "INSERT INTO tbl_complaint(id, main_office, office_code, office_name, complaint_id, sent_date, received_date, settlement_date, complainant_name, complaint_type, sub_complaint_type, complaint_location, tel_contact, complaint_status, number_of_day) ".
+            $sql = "INSERT INTO tbl_complaint(id, main_office, office_code, office_name, complaint_id, sent_date, received_date, settlement_date, complainant_name, complaint_type, sub_complaint_type, complaint_location, tel_contact, complaint_status, number_of_day)".
                     "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("isssssssssssssi",$count_complaint, $main_office,

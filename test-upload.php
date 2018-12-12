@@ -99,7 +99,7 @@
     </body>    
     <script>
         $(function(){
-            
+
             $('table').scrollTableBody({ rowsToDisplay:10 });
 
             $('[id="voc-form"]').submit(function(event){
@@ -118,6 +118,7 @@
                         $.blockUI({ message:'<h3>Uploading xlsx file...</h3>' });
                     },
                     success: function(response) {
+                        console.log("success");
                         alert(response);
                     },
                     error: function(response){
