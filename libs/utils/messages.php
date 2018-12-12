@@ -112,7 +112,7 @@
                 "action": {
                   "type": "uri",
                   "label": "รายละเอียดเพิ่มเติม",
-                  "uri": "https://voc-rg3.herokuapp.com/south.php?NUMBER=@10"
+                  "uri": "https://voc-rg3.herokuapp.com/central.php?NUMBER=@10"
                 }
               }
             ]
