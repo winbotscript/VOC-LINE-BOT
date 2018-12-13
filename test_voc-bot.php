@@ -10,65 +10,41 @@ $events = json_decode($content, true);
 
 if (!is_null($events['events'])) {
     // Loop through each event
-    foreach ($events['events'] as $event){
-				$hello_prefix = substr($text, 0, 10);
-				$group_name = substr($text, 10);
-				$source_type = $event['source']['type'];
-				if($hello_prefix == "/hellobot:" AND $source_type == "group"){
-					$group_id = $event['source']['groupId'];
-					$fetch_existing_group = "SELECT id FROM tbl_line_group WHERE group_id = '$group_id'";
-					$group_result = mysqli_query($conn, $fetch_existing_group);
-					if(mysqli_num_rows($group_result) > 0) {
-						break;
-					}
+    foreach ($events['events'] as $event) {
+        // Reply only when message sent is in 'text' format
+	$text = $event['message']['text'];
+	// Get replyToken
+	$replyToken = $event['replyToken'];
+	$hello_prefix = substr($text, 0, 10);
+	$group_name = substr($text, 10);
+	$source_type = $event['source']['type'];
+		if($hello_prefix == "/hellobot:" AND $source_type == "group"){
+			$group_id = $event['source']['groupId'];
+			// $fetch_existing_group = "SELECT id FROM tbl_line_group WHERE group_id = '$group_id'";
+			// $group_result = mysqli_query($conn, $fetch_existing_group);
+			// if(mysqli_num_rows($group_result) > 0) {
+			// 	break;
+			// }
 
-					$insert_group = "INSERT INTO tbl_line_group(group_id, group_name) VALUES('$group_id', '$group_name')";
-					mysqli_query($conn, $insert_group);
-					$messages = [ 'type' => 'text', 'text' => 'เปิดใช้งาน Daily Alert เรียบร้อยแล้ว'];
-					$url = 'https://api.line.me/v2/bot/message/reply';
-					$data = [
-							'replyToken' => $replyToken,
-							'messages' => [$messages],
-					];
-					$post = json_encode($data);
-					$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-					$ch = curl_init($url);
-					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-					curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-					curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-					curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-					$result = curl_exec($ch);
-					curl_close($ch);
-					break;
-				}
-
-							
-
-				mysqli_close($conn);
-			
-			
-				// Make a POST Request to Messaging API to reply to sender
-				$url = 'https://api.line.me/v2/bot/message/reply';
-				$data = [
+			$insert_group = "INSERT INTO tbl_line_group(group_id, group_name) VALUES('$group_id', '$group_name')";
+			mysqli_query($conn, $insert_group);
+			$messages = [ 'type' => 'text', 'text' => 'เปิดใช้งาน Daily Alert เรียบร้อยแล้ว'];
+			$url = 'https://api.line.me/v2/bot/message/reply';
+			$data = [
 					'replyToken' => $replyToken,
 					'messages' => [$messages],
-				];
-				$post = json_encode($data);
-				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-	
-				$ch = curl_init($url);
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				$result = curl_exec($ch);
-				curl_close($ch);
-	
-				echo $result . "\r\n";
+			];
+			$post = json_encode($data);
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
+		}
 	}
 }
-
-echo '<a href="test.php">test</a>';
 
