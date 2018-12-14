@@ -125,9 +125,9 @@
             // $number_of_day = getDiffDate($sent_date, $settlement_date, $complaint_status);
             $number_of_day = $row['จำนวนวัน'];
 
-            $sent_date->format("Y-m-d");
-            $received_date->format("Y-m-d");
-            $settlement_date->format("Y-m-d");
+            $sent_date = date("Y-m-d H:i");
+            $received_date = date("Y-m-d H:i");
+            $settlement_date= date("Y-m-d H:i");
 
             // check null
             // $sent_date = isset($sent_date) ? $sent_date->format("Y-m-d"):NULL;
