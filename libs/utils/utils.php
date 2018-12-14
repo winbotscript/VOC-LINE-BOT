@@ -124,9 +124,9 @@
             $complaint_status = $row['ผลการดำเนินการ'];
             // $number_of_day = getDiffDate($sent_date, $settlement_date, $complaint_status);
             $number_of_day = $row['จำนวนวัน'];
-            $sent_date_formated = date('d-m-Y', PHPExcel_Shared_Date::ExcelToPHP($sent_date));
-            $received_date_formated = date('d-m-Y', PHPExcel_Shared_Date::ExcelToPHP($received_date));
-            $settlement_date_formated = date('d-m-Y', PHPExcel_Shared_Date::ExcelToPHP($settlement_date));
+            $sent_date_formated = date('d-m-Y H:i', PHPExcel_Shared_Date::ExcelToPHP($sent_date));
+            $received_date_formated = date('d-m-Y H:i', PHPExcel_Shared_Date::ExcelToPHP($received_date));
+            $settlement_date_formated = date('d-m-Y H:i', PHPExcel_Shared_Date::ExcelToPHP($settlement_date));
 
             // check null
             // $sent_date = isset($sent_date) ? $sent_date->format("Y-m-d"):NULL;
