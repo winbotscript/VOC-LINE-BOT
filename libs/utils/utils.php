@@ -112,9 +112,9 @@
             $office_name = $row['การไฟฟ้า'];
             $complaint_id = $row['เลขที่คำร้องส่งถึง กฟภ.'];
 
-            $sent_date = $row['วันที่คำร้องส่งถึง กฟภ.'];
-            $received_date = $row['วันที่รับข้อร้องเรียน'];
-            $settlement_date = $row['วันที่ปิดข้อร้องเรียน'];
+            $sent_date = (int)$row['วันที่คำร้องส่งถึง กฟภ.'];
+            $received_date = (int)$row['วันที่รับข้อร้องเรียน'];
+            $settlement_date = (int)$row['วันที่ปิดข้อร้องเรียน'];
 
             $complainant_name = $row['ชื่อผู้ร้องเรียน'];
             $complaint_type = $row['ประเภทข้อร้องเรียน'];
@@ -124,7 +124,9 @@
             $complaint_status = $row['ผลการดำเนินการ'];
             // $number_of_day = getDiffDate($sent_date, $settlement_date, $complaint_status);
             $number_of_day = $row['จำนวนวัน'];
-            echo $sent_date;
+            $sent_date_formated = date('d-m-Y', PHPExcel_Shared_Date::ExcelToPHP($sent_date));
+            $received_date_formated = date('d-m-Y', PHPExcel_Shared_Date::ExcelToPHP($received_date));
+            $settlement_date_formated = date('d-m-Y', PHPExcel_Shared_Date::ExcelToPHP($settlement_date));
 
             // check null
             // $sent_date = isset($sent_date) ? $sent_date->format("Y-m-d"):NULL;
@@ -136,7 +138,7 @@
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("isssssssssssssi",$count_complaint, $main_office,
                     $office_code,$office_name,$complaint_id,
-                    $sent_date,$received_date,$settlement_date,
+                    $sent_date_formated,$received_date_formated,$settlement_date_formated,
                     $complainant_name,$complaint_type,$sub_complaint_type,
                     $complaint_location,$tel_contact,$complaint_status,$number_of_day);
             $stmt->execute();
