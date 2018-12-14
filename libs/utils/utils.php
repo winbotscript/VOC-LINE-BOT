@@ -112,9 +112,9 @@
             $office_name = $row['การไฟฟ้า'];
             $complaint_id = $row['เลขที่คำร้องส่งถึง กฟภ.'];
 
-            $sent_date_unformat = ($row['วันที่คำร้องส่งถึง กฟภ.']);
-            $received_date_unformat = ($row['วันที่รับข้อร้องเรียน']);
-            $settlement_date_unformat = ($row['วันที่ปิดข้อร้องเรียน']);
+            $sent_date_unformat = $row['วันที่คำร้องส่งถึง กฟภ.'];
+            $received_date_unformat = $row['วันที่รับข้อร้องเรียน'];
+            $settlement_date_unformat = $row['วันที่ปิดข้อร้องเรียน'];
 
             $complainant_name = $row['ชื่อผู้ร้องเรียน'];
             $complaint_type = $row['ประเภทข้อร้องเรียน'];
