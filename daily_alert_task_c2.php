@@ -14,7 +14,7 @@
         return;
     }
 
-    $fetch_group_list = "SELECT group_id FROM tbl_line_group WHERE status = 'A' AND group_id = 'C1a4ac37bfa2c631800e6ece775f1b997'";
+    $fetch_group_list = "SELECT group_id FROM tbl_line_group WHERE status = 'A' AND group_id = 'C143323275a7bb0b037effcb3cef6bb24'";
     $group_list = mysqli_query($conn, $fetch_group_list);
 
     $fetch_existing_complaint = "SELECT main_office, COUNT(main_office) AS count_complaint ".
