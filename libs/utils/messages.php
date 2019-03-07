@@ -4,7 +4,7 @@
     $count = 0;
     $json = '{
       "type": "flex",
-      "altText": "DAILY ALERT : รายงานเรื่องร้องเรียนสถานะรอและกำลังดำเนินการมากกว่าเท่ากับ 10 วัน",
+      "altText": "DAILY ALERT : รายงานเรื่องร้องเรียนสถานะรอและกำลังดำเนินการมากกว่าเท่ากับ 7 วัน",
       "contents": {
           "type": "bubble",
           "styles": {
@@ -121,7 +121,7 @@
      }';
     $result = json_decode($json);
     return $result;
-    
+  }
   function getBubbleMessages7days($conn, $today, $complaint_list){
     $count = 0;
     $json = '{
