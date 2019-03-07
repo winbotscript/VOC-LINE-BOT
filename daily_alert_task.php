@@ -62,7 +62,7 @@
                                 "ORDER BY main_office ASC";
     $complaint_list = mysqli_query($conn, $fetch_existing_complaint);
     if(mysqli_num_rows($complaint_list) > 0){
-        $messages = getBubbleMessages($conn, DateThai(date("Y-m-d")), $complaint_list);
+        $messages = getBubbleMessages7days($conn, DateThai(date("Y-m-d")), $complaint_list);
     } else {
         $messages = [
             "type"=> "text",
