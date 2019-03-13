@@ -50,7 +50,7 @@
         $result = curl_exec($ch);
         curl_close($ch);
     }
-//Alert 7 Days
+//Alert 7 Days for C2
     $fetch_group_list = "SELECT group_id FROM tbl_line_group WHERE status = 'A' AND alert_7days = 'Y'";
     $group_list = mysqli_query($conn, $fetch_group_list);
 
@@ -66,7 +66,7 @@
     } else {
         $messages = [
             "type"=> "text",
-            "text"=> "Daily Alert :\n\nไม่มีข้อร้องเรียนสถานะกำลังดำเนินการหรือรอดำเนินการที่มากกว่าเท่ากับ 7 วัน ในวันที่ ".DateThai(date("Y-m-d"))
+            "text"=> "Daily Alert :\n\nกฟก.2 ไม่มีข้อร้องเรียนสถานะกำลังดำเนินการหรือรอดำเนินการที่มากกว่าเท่ากับ 7 วัน ในวันที่ ".DateThai(date("Y-m-d"))
         ];
     }
 
